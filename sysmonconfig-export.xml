@@ -424,6 +424,13 @@
 	<RuleGroup name="" groupRelation="or">
 		<ImageLoad onmatch="include">
 			<!--NOTE: Using "include" with no rules means nothing in this section will be logged-->
+			<!--ADDED: Log all DLLs loaded from the Temp directory, Downloads directory, Public directory, ProgramData directory, and AppData directory.-->
+				<ImageLoaded condition="contains">\AppData\Local\</ImageLoaded>
+				<ImageLoaded condition="contains">\AppData\Roaming\</ImageLoaded>
+				<ImageLoaded condition="contains">\Temp\</ImageLoaded>
+				<ImageLoaded condition="contains">\Downloads\</ImageLoaded>
+				<ImageLoaded condition="contains">\Users\Public\</ImageLoaded>
+				<ImageLoaded condition="contains">\ProgramData\</ImageLoaded>
 		</ImageLoad>
 	</RuleGroup>
 
@@ -471,6 +478,21 @@
 	<RuleGroup name="" groupRelation="or">
 		<ProcessAccess onmatch="include">
 			<!--NOTE: Using "include" with no rules means nothing in this section will be logged-->
+			<!--ADDED: Log all access to the following processes, which are often targeted by malware for credential theft and other malicious activity.-->
+			<TargetImage condition="end with">\lsass.exe</TargetImage>
+			<TargetImage condition="end with">\explorer.exe</TargetImage>
+			<TargetImage condition="end with">\svchost.exe</TargetImage>
+			<TargetImage condition="end with">\notepad.exe</TargetImage>
+			<TargetImage condition="end with">\winlogon.exe</TargetImage>
+			<TargetImage condition="end with">\spoolsv.exe</TargetImage>
+			<TargetImage condition="end with">\dllhost.exe</TargetImage>
+			<TargetImage condition="end with">\rundll32.exe</TargetImage>
+			<TargetImage condition="end with">\regsvr32.exe</TargetImage>
+			<TargetImage condition="end with">\searchindexer.exe</TargetImage>
+			<TargetImage condition="end with">\taskhostw.exe</TargetImage>
+			<TargetImage condition="end with">\msedge.exe</TargetImage>
+			<TargetImage condition="end with">\chrome.exe</TargetImage>
+			<TargetImage condition="end with">\firefox.exe</TargetImage>
 		</ProcessAccess>
 	</RuleGroup>
 
@@ -597,6 +619,19 @@
 			<TargetObject name="T1060" condition="contains">CurrentVersion\Windows\Run</TargetObject> <!--Windows: [ https://msdn.microsoft.com/en-us/library/jj874148.aspx ] -->
 			<TargetObject name="T1060" condition="contains">CurrentVersion\Winlogon\Shell</TargetObject> <!--Windows: [ https://msdn.microsoft.com/en-us/library/ms838576(v=winembedded.5).aspx ] -->
 			<TargetObject name="T1060" condition="contains">CurrentVersion\Winlogon\System</TargetObject> <!--Windows [ https://www.exterminate-it.com/malpedia/regvals/zlob-dns-changer/118 ] -->
+			<!-- ADDED:Security service registry keys -->
+			<TargetObject condition="is">HKLM\SYSTEM\CurrentControlSet\Services\SentinelAgent</TargetObject>
+			<TargetObject condition="is">HKLM\SYSTEM\CurrentControlSet\Services\SentinelStaticEngine</TargetObject>
+			<TargetObject condition="is">HKLM\SYSTEM\CurrentControlSet\Services\SentinelHelperService</TargetObject>
+			<TargetObject condition="is">HKLM\SYSTEM\CurrentControlSet\Services\WinDefend</TargetObject>
+			<TargetObject condition="is">HKLM\SYSTEM\CurrentControlSet\Services\Sense</TargetObject>
+			<TargetObject condition="is">HKLM\SYSTEM\CurrentControlSet\Services\WdNisSvc</TargetObject>
+			<TargetObject condition="is">HKLM\SYSTEM\CurrentControlSet\Services\WdFilter</TargetObject>
+			<TargetObject condition="is">HKLM\SYSTEM\CurrentControlSet\Services\Sysmon</TargetObject>
+			<TargetObject condition="is">HKLM\SYSTEM\CurrentControlSet\Services\Sysmon64</TargetObject>
+			<TargetObject condition="is">HKLM\SYSTEM\CurrentControlSet\Services\SysmonDrv</TargetObject>
+			<TargetObject condition="is">HKLM\SYSTEM\CurrentControlSet\Services\wazuh-agent</TargetObject>
+			<TargetObject condition="begin with">HKLM\SOFTWARE\Microsoft\Windows Defender\Exclusions\</TargetObject>
 			<TargetObject condition="begin with">HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify</TargetObject> <!--Windows: Autorun location [ https://attack.mitre.org/wiki/Technique/T1004 ] [ https://www.cylance.com/windows-registry-persistence-part-2-the-run-keys-and-search-order ] -->
 			<TargetObject condition="begin with">HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\Shell</TargetObject> <!--Windows: [ https://technet.microsoft.com/en-us/library/ee851671.aspx ] -->
 			<TargetObject condition="begin with">HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\Userinit</TargetObject> <!--Windows: Autorun location [ https://www.cylance.com/windows-registry-persistence-part-2-the-run-keys-and-search-order ] -->
@@ -604,6 +639,9 @@
 			<TargetObject condition="begin with">HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\BootExecute</TargetObject> <!--Windows: Autorun | Credit @ion-storm | [ https://www.cylance.com/windows-registry-persistence-part-2-the-run-keys-and-search-order ] -->
 			<TargetObject condition="begin with">HKLM\Software\Microsoft\Windows NT\CurrentVersion\AeDebug</TargetObject> <!--Windows: Automatic program crash debug program [ https://www.symantec.com/security_response/writeup.jsp?docid=2007-050712-5453-99&tabid=2 ] -->
 			<TargetObject condition="contains">UserInitMprLogonScript</TargetObject> <!--Windows: Legacy logon script environment variable [ http://www.hexacorn.com/blog/2014/11/14/beyond-good-ol-run-key-part-18/ ] -->
+			<TargetObject condition="end with">\DisableBehaviorMonitoring</TargetObject>
+			<TargetObject condition="end with">\DisableIOAVProtection</TargetObject>
+			<TargetObject condition="end with">\DisableScriptScanning</TargetObject>
 			<TargetObject name="T1112,ChangeStartupFolderPath" condition="end with">user shell folders\startup</TargetObject> <!--Monitor changes to Startup folder location for monitoring evasion | Credit @SBousseaden-->
 			<!--Services-->
 			<TargetObject name="T1031,T1050" condition="end with">\ServiceDll</TargetObject> <!--Windows: Points to a service's DLL [ https://blog.cylance.com/windows-registry-persistence-part-1-introduction-attack-phases-and-windows-services ] -->
@@ -724,6 +762,8 @@
 			<TargetObject name="InvDB-DriverVer" condition="end with">\DriverVerVersion</TargetObject> <!-- [ https://df-stream.com/2015/02/leveraging-devicecontainers-key/ ] -->
 			<TargetObject name="InvDB-CompileTimeClaim" condition="end with">\LinkDate</TargetObject> <!-- Compile time of EXE, may not be reliable [ https://en.wikipedia.org/wiki/Link_time ] -->
 			<TargetObject name="InvDB" condition="contains">Compatibility Assistant\Store\</TargetObject> <!-- Inventory -->
+			<TargetObject name="RunMRU" condition="contains">CurrentVersion\Explorer\RunMRU</TargetObject>
+			<TargetObject name="TypedPaths" condition="contains">CurrentVersion\Explorer\TypedPaths</TargetObject>
 			<!--Suspicious sources-->
 			<Image name="Suspicious,ImageBeginWithBackslash" condition="end with">regedit.exe</Image> <!--Users and helpdesk staff making system modifications -->
 			<Image name="Suspicious,ImageBeginWithBackslash" condition="begin with">\</Image> <!--Devices and VSC shouldn't be executing changes | Credit: @SBousseaden @ionstorm @neu5ron @PerchedSystems [ https://twitter.com/SwiftOnSecurity/status/1133167323991486464 ] -->
