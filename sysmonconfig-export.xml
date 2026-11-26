@@ -479,7 +479,7 @@
 		<ProcessAccess onmatch="include">
 			<!--NOTE: Using "include" with no rules means nothing in this section will be logged-->
 			<!--ADDED: Log all access to the following processes, which are often targeted by malware for credential theft and other malicious activity.-->
-			<TargetImage condition="image">\lsass.exe</TargetImage>
+			<TargetImage condition="image">lsass.exe</TargetImage>
 			<TargetImage condition="end with">\explorer.exe</TargetImage>
 			<TargetImage condition="end with">\svchost.exe</TargetImage>
 			<TargetImage condition="end with">\notepad.exe</TargetImage>
