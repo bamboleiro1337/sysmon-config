@@ -896,7 +896,7 @@
 		<RuleGroup name="" groupRelation="or">
 			<PipeEvent onmatch="include">
 				<!-- Remote Command Execution Tools -->
-				<PipeName condition="contains any">paexec;remcom;csexec</PipeName>
+				<PipeName condition="contains any">psexec;psexesvc;paexec;remcom;csexec</PipeName>
 				<!-- Password or Credential Dumpers -->
 				<PipeName condition="contains any">\lsadump;\cachedump;\wceservicepipe</PipeName>
 				<!-- Malware -->
