@@ -76,61 +76,61 @@
 	<RuleGroup name="" groupRelation="or">
 		<ProcessAccess onmatch="exclude">
 			<Rule name="noise: wmiprvse->explorer (query-only)" groupRelation="and">
-			<SourceImage condition="is">C:\Windows\System32\wbem\wmiprvse.exe</SourceImage>
-			<TargetImage condition="end with">\explorer.exe</TargetImage>
-			<GrantedAccess condition="is any">0x1000;0x1400</GrantedAccess>
+				<SourceImage condition="is">C:\Windows\System32\wbem\wmiprvse.exe</SourceImage>
+				<TargetImage condition="end with">\explorer.exe</TargetImage>
+				<GrantedAccess condition="is any">0x1000;0x1400</GrantedAccess>
 			</Rule>
 			<Rule name="noise: svchost->explorer (query-only)" groupRelation="and">
-			<SourceImage condition="is">C:\Windows\System32\svchost.exe</SourceImage>
-			<TargetImage condition="end with">\explorer.exe</TargetImage>
-			<GrantedAccess condition="is any">0x1000;0x1400</GrantedAccess>
+				<SourceImage condition="is">C:\Windows\System32\svchost.exe</SourceImage>
+				<TargetImage condition="end with">\explorer.exe</TargetImage>
+				<GrantedAccess condition="is any">0x1000;0x1400</GrantedAccess>
 			</Rule>
 			<Rule name="noise: sppsvc->explorer (query-only)" groupRelation="and">
-			<SourceImage condition="is">C:\Windows\System32\sppsvc.exe</SourceImage>
-			<TargetImage condition="end with">\explorer.exe</TargetImage>
-			<GrantedAccess condition="is any">0x1000;0x1400</GrantedAccess>
+				<SourceImage condition="is">C:\Windows\System32\sppsvc.exe</SourceImage>
+				<TargetImage condition="end with">\explorer.exe</TargetImage>
+				<GrantedAccess condition="is any">0x1000;0x1400</GrantedAccess>
 			</Rule>
 			<Rule name="noise: RuntimeBroker->explorer (query-only)" groupRelation="and">
-			<SourceImage condition="is">C:\Windows\System32\RuntimeBroker.exe</SourceImage>
-			<TargetImage condition="end with">\explorer.exe</TargetImage>
-			<GrantedAccess condition="is any">0x1000;0x1400</GrantedAccess>
+				<SourceImage condition="is">C:\Windows\System32\RuntimeBroker.exe</SourceImage>
+				<TargetImage condition="end with">\explorer.exe</TargetImage>
+				<GrantedAccess condition="is any">0x1000;0x1400</GrantedAccess>
 			</Rule>
 			<Rule name="noise: taskhostw->explorer (query-only)" groupRelation="and">
-			<SourceImage condition="is">C:\Windows\System32\taskhostw.exe</SourceImage>
-			<TargetImage condition="end with">\explorer.exe</TargetImage>
-			<GrantedAccess condition="is any">0x1000;0x1400</GrantedAccess>
+				<SourceImage condition="is">C:\Windows\System32\taskhostw.exe</SourceImage>
+				<TargetImage condition="end with">\explorer.exe</TargetImage>
+				<GrantedAccess condition="is any">0x1000;0x1400</GrantedAccess>
 			</Rule>
 			<Rule name="noise: wazuh-agent->explorer (query-only)" groupRelation="and">
-			<SourceImage condition="is">C:\Program Files (x86)\ossec-agent\wazuh-agent.exe</SourceImage>
-			<TargetImage condition="end with">\explorer.exe</TargetImage>
-			<GrantedAccess condition="is any">0x1000;0x1400</GrantedAccess>
+				<SourceImage condition="is">C:\Program Files (x86)\ossec-agent\wazuh-agent.exe</SourceImage>
+				<TargetImage condition="end with">\explorer.exe</TargetImage>
+				<GrantedAccess condition="is any">0x1000;0x1400</GrantedAccess>
 			</Rule>
 			<Rule name="noise: EdgeUpdate->explorer (query-only)" groupRelation="and">
-			<SourceImage condition="is">C:\Program Files (x86)\Microsoft\EdgeUpdate\MicrosoftEdgeUpdate.exe</SourceImage>
-			<TargetImage condition="end with">\explorer.exe</TargetImage>
-			<GrantedAccess condition="is any">0x1000;0x1400</GrantedAccess>
+				<SourceImage condition="is">C:\Program Files (x86)\Microsoft\EdgeUpdate\MicrosoftEdgeUpdate.exe</SourceImage>
+				<TargetImage condition="end with">\explorer.exe</TargetImage>
+				<GrantedAccess condition="is any">0x1000;0x1400</GrantedAccess>
 			</Rule>
 			<Rule name="noise: msedge->explorer (query-only)" groupRelation="and">
-			<SourceImage condition="is">C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe</SourceImage>
-			<TargetImage condition="end with">\explorer.exe</TargetImage>
-			<GrantedAccess condition="is any">0x1000;0x1400</GrantedAccess>
+				<SourceImage condition="is">C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe</SourceImage>
+				<TargetImage condition="end with">\explorer.exe</TargetImage>
+				<GrantedAccess condition="is any">0x1000;0x1400</GrantedAccess>
 			</Rule>
 			<Rule name="noise: Defender->explorer (query-only)" groupRelation="and">
-			<SourceImage condition="begin with">C:\ProgramData\Microsoft\Windows Defender\Platform\</SourceImage>
-			<SourceImage condition="end with">\MsMpEng.exe</SourceImage>
-			<TargetImage condition="end with">\explorer.exe</TargetImage>
-			<GrantedAccess condition="is any">0x1000;0x1400</GrantedAccess>
+				<SourceImage condition="begin with">C:\ProgramData\Microsoft\Windows Defender\Platform\</SourceImage>
+				<SourceImage condition="end with">\MsMpEng.exe</SourceImage>
+				<TargetImage condition="end with">\explorer.exe</TargetImage>
+				<GrantedAccess condition="is any">0x1000;0x1400</GrantedAccess>
 			</Rule>
 			<Rule name="noise: GoogleUpdater->explorer (query-only)" groupRelation="and">
-			<SourceImage condition="begin with">C:\Program Files (x86)\Google\GoogleUpdater\</SourceImage>
-			<SourceImage condition="end with">\updater.exe</SourceImage>
-			<TargetImage condition="end with">\explorer.exe</TargetImage>
-			<GrantedAccess condition="is any">0x1000;0x1400</GrantedAccess>
+				<SourceImage condition="begin with">C:\Program Files (x86)\Google\GoogleUpdater\</SourceImage>
+				<SourceImage condition="end with">\updater.exe</SourceImage>
+				<TargetImage condition="end with">\explorer.exe</TargetImage>
+				<GrantedAccess condition="is any">0x1000;0x1400</GrantedAccess>
 			</Rule>
 			<Rule name="noise: OneDrive->explorer (query-only)" groupRelation="and">
-			<SourceImage condition="begin with">C:\Users\</SourceImage>
-			<SourceImage condition="end with">\AppData\Local\Microsoft\OneDrive\OneDrive.exe</SourceImage>
-			<TargetImage condition="end with">\explorer.exe</TargetImage>
+				<SourceImage condition="begin with">C:\Users\</SourceImage>
+				<SourceImage condition="end with">\AppData\Local\Microsoft\OneDrive\OneDrive.exe</SourceImage>
+				<TargetImage condition="end with">\explorer.exe</TargetImage>
 			<GrantedAccess condition="is any">0x1000;0x1400</GrantedAccess>
 			</Rule>
 		</ProcessAccess>
